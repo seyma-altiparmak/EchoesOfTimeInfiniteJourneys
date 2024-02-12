@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private PlayerInput _playerInput;
+    private Animator _animator;
 
     private Vector2 _movementInput;
     private bool _isJumping;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -49,6 +51,19 @@ public class PlayerController : MonoBehaviour
         float moveSpeed = _isSprinting ? fastMoveSpeed : normalMoveSpeed;
         Vector3 movement = new Vector3(_movementInput.x, 0, _movementInput.y) * moveSpeed * Time.fixedDeltaTime;
         transform.Translate(movement, Space.World);
+
+        //Animator controller
+        if (moveSpeed == fastMoveSpeed) _animator.SetBool("isRun", true);
+        else if(moveSpeed == normalMoveSpeed)
+        {
+            _animator.SetBool("isWalk", true);
+            _animator.SetBool("isRun", false);
+        }
+        else
+        {
+            _animator.SetBool("isWalk", false);
+            _animator.SetBool("isRun", false);
+        }
     }
 
     private void Jump()
@@ -56,5 +71,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
+    
    
 }
