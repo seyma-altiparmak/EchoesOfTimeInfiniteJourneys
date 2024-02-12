@@ -12,12 +12,12 @@ Oyuncu sürekli zamanı manipüle edebilir ve farklı zaman dilimleri arasında 
 - Mekanik – 3 : Player Controller with New Input System (basic düzeyde bitti)
 - Mekanik – 4 : Puzzle oyunları
 - Mekanik – 5 : Can Sahası
-- Mekanik – 6 : Cinemachine
+- Mekanik – 6 : Cinemachine (entegre edildi, geliştirmeye açıldı.)
 - Mekanik – 7 : Sinematikler
 
 ### Game Arts / Oyunun Görsel Arayüzü	
 - Oyunumun görsel arayüzü için Global Game Jam’de dağıtılan kullanım haklarının bize ait olduğu bir gelecek şehir paketi kullandım. (Enviroment)
-- Karakter ?
+- Karakter : lobal Game Jam’de dağıtılan kullanım haklarının bize ait olduğu bir gelecek hayvan paketini kullandım. Karakterimiz şekil değiştiren bir racoondur. 🦝
 - Dönüşülecek objeler?
 
 ### Level Design / Leveller				
