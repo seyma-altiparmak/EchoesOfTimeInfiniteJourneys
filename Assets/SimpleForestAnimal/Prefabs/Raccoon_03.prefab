@@ -584,7 +584,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a47734c228690c7408645b04cd1a2550, type: 2}
+  - {fileID: 2100000, guid: 6c614b9782c11de4c8990ff0317cc5bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -749,6 +749,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3744b8ab-a12d-403b-aad4-2ac85f46f774
     m_ActionName: Player/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 448e0f7a-7e20-460f-be4b-d4785e02b289
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
