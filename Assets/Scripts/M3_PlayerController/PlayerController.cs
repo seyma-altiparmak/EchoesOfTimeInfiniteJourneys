@@ -7,6 +7,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //03.04
+    public static PlayerController Instance
+    {
+        get;
+        private set;
+    }
+
     public event EventHandler OnInteractAction;
     public event EventHandler<OnSelectGarbageChangeEventArgs> OnSelectGarbageChanged;
 
@@ -84,33 +91,18 @@ public class PlayerController : MonoBehaviour
                 //Garbage var mý?
                 if(garbage != _garbage)
                 {
-                    _garbage = garbage;
-
-                    OnSelectGarbageChanged?.Invoke(this, new OnSelectGarbageChangeEventArgs
-                    {
-                        _garbage = _garbage
-                    }); 
+                    SetSelectedGarbage(garbage); 
                 }
                
             }
             else
             {
-                _garbage = null;
-
-                OnSelectGarbageChanged?.Invoke(this, new OnSelectGarbageChangeEventArgs
-                {
-                    _garbage = _garbage
-                });
+                SetSelectedGarbage(null);
             }
         }
         else
         {
-            _garbage = null;
-
-            OnSelectGarbageChanged?.Invoke(this, new OnSelectGarbageChangeEventArgs
-            {
-                _garbage = _garbage
-            });
+            SetSelectedGarbage(null);
         }
         Debug.Log(_garbage);
     }
@@ -153,4 +145,13 @@ public class PlayerController : MonoBehaviour
         if (_garbage != null) _garbage.Interact();
     }
    
+    private void SetSelectedGarbage(Garbage _garbage)
+    {
+        this._garbage = _garbage;
+
+        OnSelectGarbageChanged?.Invoke(this, new OnSelectGarbageChangeEventArgs
+        {
+            _garbage = _garbage
+        });
+    }
 }
