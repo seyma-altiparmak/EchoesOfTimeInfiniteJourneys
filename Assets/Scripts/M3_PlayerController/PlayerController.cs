@@ -112,21 +112,19 @@ public class PlayerController : MonoBehaviour
         float moveSpeed = _isSprinting ? fastMoveSpeed : normalMoveSpeed;
         Vector3 movement = new Vector3(_movementInput.x, 0, _movementInput.y);
         movement = movement.normalized * moveSpeed * Time.fixedDeltaTime;
-        float playerSize = 5f;
 
+        Vector3 cameraForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized;
 
-        bool canMove = !Physics.Raycast(transform.position, movement, playerSize);
-        if (movement != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
-        }
+        Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
 
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
         transform.Translate(movement, Space.World);
-        
-        //Animator controller
-        if (moveSpeed == fastMoveSpeed) _animator.SetBool("isRun", true);
-        else if(moveSpeed == normalMoveSpeed)
+
+        if (moveSpeed == fastMoveSpeed)
+        {
+            _animator.SetBool("isRun", true);
+        }
+        else if (moveSpeed == normalMoveSpeed)
         {
             _animator.SetBool("isWalk", true);
             _animator.SetBool("isRun", false);
