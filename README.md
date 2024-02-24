@@ -15,6 +15,7 @@ Oyuncu sürekli zamanı manipüle edebilir ve farklı zaman dilimleri arasında 
 - Mekanik – 5 : Can Sahası
 - Mekanik – 6 : Cinemachine (entegre edildi, geliştirmeye açıldı.)
 - Mekanik – 7 : Sinematikler
+- Mekanik - 8 : Canlı gibi UI (VFX öğren)
 
 ### Game Arts / Oyunun Görsel Arayüzü	
 - Oyunumun görsel arayüzü için Global Game Jam’de dağıtılan kullanım haklarının bize ait olduğu bir gelecek şehir paketi kullandım. (Enviroment)
