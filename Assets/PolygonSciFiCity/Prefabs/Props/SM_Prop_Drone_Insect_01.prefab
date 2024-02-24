@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33413655730870036}
   - component: {fileID: 23805290052808534}
   - component: {fileID: 64059654910487614}
-  - component: {fileID: 7471094082720197545}
   m_Layer: 0
   m_Name: SM_Prop_Drone_Insect_01
   m_TagString: Untagged
@@ -108,21 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43864166340991380, guid: c74a66e9d3d2c334aaffde9effbac9cc, type: 2}
---- !u!114 &7471094082720197545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079592782461814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7a9e6754ee7f849b6b5f70ea7018bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &1236731199835310851
 GameObject:
   m_ObjectHideFlags: 0

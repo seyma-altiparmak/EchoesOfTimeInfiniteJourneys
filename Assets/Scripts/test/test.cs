@@ -61,7 +61,6 @@ public class test : MonoBehaviour
         if (isFollowingPlayer)
         {
             Transform playerTransform = hit.transform;
-            Vector3 directionToPlayer = playerTransform.position - transform.position;
             transform.Rotate(Vector3.up, Random.Range(0f, 360f) * Time.deltaTime);
         }
         else

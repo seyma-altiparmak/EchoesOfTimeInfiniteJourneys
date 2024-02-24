@@ -110,12 +110,20 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         float moveSpeed = _isSprinting ? fastMoveSpeed : normalMoveSpeed;
-        Vector3 movement = new Vector3(_movementInput.x, 0, _movementInput.y) * moveSpeed * Time.fixedDeltaTime;
-        transform.Translate(movement, Space.World);
+        Vector3 movement = new Vector3(_movementInput.x, 0, _movementInput.y);
+        movement = movement.normalized * moveSpeed * Time.fixedDeltaTime;
         float playerSize = 5f;
 
-        bool canMove = !Physics.Raycast(transform.position, movement, playerSize);
 
+        bool canMove = !Physics.Raycast(transform.position, movement, playerSize);
+        if (movement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
+        }
+
+        transform.Translate(movement, Space.World);
+        
         //Animator controller
         if (moveSpeed == fastMoveSpeed) _animator.SetBool("isRun", true);
         else if(moveSpeed == normalMoveSpeed)
@@ -132,9 +140,14 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        StartCoroutine(JumpDelay());
     }
 
+    IEnumerator JumpDelay()
+    {
+        _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(2f);
+    }
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
