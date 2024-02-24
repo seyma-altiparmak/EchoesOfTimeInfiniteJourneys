@@ -145,7 +145,15 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator JumpDelay()
     {
-        _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        RaycastHit hit;
+        float raycastDistance = 0.2f; // Adjust this value to your needs
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
+        {
+            if (hit.distance <= raycastDistance)
+            {
+                _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
         yield return new WaitForSeconds(2f);
     }
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
