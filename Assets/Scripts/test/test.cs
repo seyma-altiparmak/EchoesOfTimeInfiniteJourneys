@@ -19,14 +19,9 @@ public class test : MonoBehaviour
     float followTimer = 0f; 
     bool isFollowingPlayer = false; 
 
-
-    private void Awake()
-    {
-        _light = GetComponentInChildren<Light>();
-    }
-
     private void Start()
     {
+        _light = GetComponentInChildren<Light>();
         angle = Random.Range(0f, 360f);
         height = Random.Range(minHeight, maxHeight);
         _position = new Vector3(Random.Range(-40f, 5f), Random.Range(-45f, 0f), height);
@@ -59,7 +54,7 @@ public class test : MonoBehaviour
             else
             {
                 isFollowingPlayer = false;
-                _light.color = Color.green;
+                if(_light.color == Color.red) _light.color = Color.green;
             }
         }
 
